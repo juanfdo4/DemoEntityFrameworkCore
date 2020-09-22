@@ -13,6 +13,11 @@ public class MoviesDbContext: DbContext  {
         modelBuilder.Entity<Movie>()
             .HasOne(p => p.Category)
             .WithMany(b => b.Movies)
+            .IsRequired()
+            .OnDelete(DeleteBehavior.Restrict)
             .HasForeignKey(p => p.IdCategory);
+
+
+    
     }
 }
